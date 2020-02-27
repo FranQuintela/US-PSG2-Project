@@ -56,4 +56,10 @@ public interface PetRepository {
 	 */
 	void save(Pet pet) throws DataAccessException;
 
+	/**
+	 * Deletes a Single Pet from an Owner
+	 */
+
+	 void deletePet(int id) throws DataAccessException;
+
 }
