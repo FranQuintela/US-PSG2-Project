@@ -98,6 +98,11 @@ public class ClinicService {
 	public Collection<Vet> findVets() throws DataAccessException {
 		return vetRepository.findAll();
 	}
+	
+	@Transactional(readOnly = true)
+	public Vet findVetById(int id) throws DataAccessException {
+		return vetRepository.findById(id);
+	}
 
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
@@ -106,6 +111,11 @@ public class ClinicService {
 	@Transactional
 	public void deletePet(int id) throws DataAccessException{
 		petRepository.deletePet(id);
+	}
+	
+	@Transactional
+	public void deleteVet(int id) throws DataAccessException{
+		vetRepository.deleteVet(id);
 	}
 
 }

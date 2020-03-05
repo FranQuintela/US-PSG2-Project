@@ -15,7 +15,11 @@
  */
 package org.springframework.samples.petclinic.repository.springdatajpa;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.repository.VetRepository;
 
@@ -24,7 +28,15 @@ import org.springframework.samples.petclinic.repository.VetRepository;
  *
  * @author Michael Isvy
  * @since 15.1.2013
+ * 
  */
 public interface SpringDataVetRepository extends VetRepository, Repository<Vet, Integer> {
 
+	@Override
+	@Query("SELECT vet FROM Vet vet WHERE vet.id =:id")
+	public Vet findById(@Param("id") int id);
+	
+	@Modifying
+	@Query("DELETE FROM Vet v WHERE v.id =:vetid")
+	void deleteVet(int vetid) throws DataAccessException;
 }
