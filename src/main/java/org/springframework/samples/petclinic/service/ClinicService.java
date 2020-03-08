@@ -25,10 +25,13 @@ import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.BookingRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,13 +52,16 @@ public class ClinicService {
 
 	private VisitRepository visitRepository;
 
+	private BookingRepository bookingRepository;
+
 	@Autowired
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository) {
+			VisitRepository visitRepository, BookingRepository bookingRepository){
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
+		this.bookingRepository = bookingRepository;
 	}
 
 	@Transactional(readOnly = true)
@@ -108,4 +114,13 @@ public class ClinicService {
 		petRepository.deletePet(id);
 	}
 
+	// BOOKING
+	@Transactional
+	public void saveBooking(Booking booking) throws DataAccessException {
+		bookingRepository.save(booking);
+	}
+
+	public Collection<Booking> findBookingsByPetId(int petId) {
+		return bookingRepository.findByPetId(petId);
+	}
 }
