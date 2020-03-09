@@ -128,4 +128,8 @@ public class ClinicService {
 
 	}
 
+	public Vet findVetById(int vetId) throws DataAccessException{
+		return vetRepository.findVetById(vetId);
+	}
+
 }

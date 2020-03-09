@@ -38,7 +38,7 @@
                             <button class="btn btn-default" type="submit"><fmt:message key="addVet"/></button>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-default" type="submit"><fmt:message key="updatePet"/></button>
+                            <button class="btn btn-default" type="submit"><fmt:message key="updateVet"/></button>
                         </c:otherwise>
                     </c:choose>
                 </div>

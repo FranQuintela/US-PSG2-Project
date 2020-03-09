@@ -31,6 +31,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -108,6 +109,28 @@ public class VetController {
 		}
 		return view;
 
+	}
+
+	@GetMapping(value = "/vets/{vetId}/edit")
+	public String initUpdateForm(@PathVariable("vetId") int vetId, ModelMap model){
+		//Initiation of an Update Form for a Vet Object
+		Vet vet = this.clinicService.findVetById(vetId);
+		model.addAttribute(vet);
+		return "vets/createOrUpdateVetForm";
+	}
+
+	@PostMapping(value = "/vets/{vetId}/edit")
+	public String processUpdateForm(@Valid Vet vet, BindingResult result, @PathVariable("vetId") int vetId, ModelMap model) {
+		if (result.hasErrors()) {
+			model.addAttribute("vet", vet);
+			model.addAttribute("specialties", vet.getSpecialties());	
+			return "vets/createOrUpdateVetForm";
+			}
+		else {
+			vet.setId(vetId);
+			this.clinicService.saveVet(vet);
+			return "redirect:/vets";
+		}
 	}
 
 }

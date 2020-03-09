@@ -47,5 +47,5 @@ public interface VetRepository {
 	void save(Vet vet) throws DataAccessException;
 	void save(@Valid Specialty specialty);
 	List<Specialty> findSpecialties() throws DataAccessException;
-
+	Vet findVetById(int vetId) throws DataAccessException;
 }
