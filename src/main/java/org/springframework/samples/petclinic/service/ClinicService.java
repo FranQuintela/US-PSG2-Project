@@ -111,11 +111,6 @@ public class ClinicService {
 	public Collection<Visit> findVisitsByPetId(final int petId) {
 		return this.visitRepository.findByPetId(petId);
 	}
-	
-	@Transactional(readOnly = true)
-	public Vet findVetById(int id) throws DataAccessException {
-		return vetRepository.findById(id);
-	}
 
 	@Transactional
 	public void deletePet(final int id) throws DataAccessException {
