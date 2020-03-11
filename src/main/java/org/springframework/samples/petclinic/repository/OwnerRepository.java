@@ -66,6 +66,7 @@ public interface OwnerRepository {
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM Owner o where o.id=:ownerId")
-	void delete(@Param(value = "ownerId") int ownerId);
+	void delete(@Param(value = "ownerId") int ownerId) throws DataAccessException;
 
 }
+ 
