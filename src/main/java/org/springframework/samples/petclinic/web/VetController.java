@@ -27,13 +27,22 @@ import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Juergen Hoeller
@@ -76,6 +85,7 @@ public class VetController {
 		vets.getVetList().addAll(this.clinicService.findVets());
 		return vets;
 	}
+
 	@ModelAttribute("specialities")
 	public List<Specialty> populatePetTypes() {
 		return this.clinicService.findSpecialties();
@@ -131,6 +141,26 @@ public class VetController {
 			this.clinicService.saveVet(vet);
 			return "redirect:/vets";
 		}
+	}
+
+	
+	
+	/**
+	 * Custom handler for displaying an owner.
+	 * @param ownerId the ID of the owner to display
+	 * @return a ModelMap with the model attributes for the view
+	 */
+	@GetMapping("/vets/{vetId}")
+	public ModelAndView showOwner(@PathVariable("vetId") int vetId) {
+		ModelAndView mav = new ModelAndView("vets/vetDetails");
+		mav.addObject(this.clinicService.findVetById(vetId));
+		return mav;
+	}
+
+	@RequestMapping(value = "/vets/{vetId}/delete", method = RequestMethod.GET)
+	public String deleteVet(Model model, @PathVariable("vetId") int vetId){
+		this.clinicService.deleteVet(vetId);
+		return "redirect:/vets";
 	}
 
 }

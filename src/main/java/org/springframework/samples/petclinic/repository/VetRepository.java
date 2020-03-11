@@ -48,4 +48,21 @@ public interface VetRepository {
 	void save(@Valid Specialty specialty);
 	List<Specialty> findSpecialties() throws DataAccessException;
 	Vet findVetById(int vetId) throws DataAccessException;
+
+	
+	/**
+	 * Retrieve an <code>Owner</code> from the data store by id.
+	 * @param id the id to search for
+	 * @return the <code>Owner</code> if found
+	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
+	 */
+	Vet findById(int id) throws DataAccessException;
+	
+	/**
+	 * Deletes a Single Veterinarian from an Owner
+	 */
+
+	 void deleteVet(int id) throws DataAccessException;
+
+
 }

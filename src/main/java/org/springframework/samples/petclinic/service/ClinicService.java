@@ -111,6 +111,11 @@ public class ClinicService {
 	public Collection<Visit> findVisitsByPetId(final int petId) {
 		return this.visitRepository.findByPetId(petId);
 	}
+	
+	@Transactional(readOnly = true)
+	public Vet findVetById(int id) throws DataAccessException {
+		return vetRepository.findById(id);
+	}
 
 	@Transactional
 	public void deletePet(final int id) throws DataAccessException {
@@ -130,6 +135,16 @@ public class ClinicService {
 
 	public Vet findVetById(int vetId) throws DataAccessException{
 		return vetRepository.findVetById(vetId);
+	}
+	
+	@Transactional
+	public void deleteVet(int id) throws DataAccessException{
+		vetRepository.deleteVet(id);
+	}
+
+	@Transactional
+	public void deleteOwner(Owner owner) throws DataAccessException {
+		ownerRepository.delete(owner.getId());
 	}
 
 }
