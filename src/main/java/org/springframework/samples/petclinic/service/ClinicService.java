@@ -118,4 +118,9 @@ public class ClinicService {
 		vetRepository.deleteVet(id);
 	}
 
+	@Transactional
+	public void deleteOwner(Owner owner) throws DataAccessException {
+		ownerRepository.delete(owner.getId());
+	}
+
 }
