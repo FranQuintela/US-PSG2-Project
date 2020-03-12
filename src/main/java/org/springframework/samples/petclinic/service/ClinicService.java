@@ -123,4 +123,9 @@ public class ClinicService {
 	public Collection<Booking> findBookingsByPetId(int petId) {
 		return bookingRepository.findByPetId(petId);
 	}
+	
+	@Transactional
+	public void deleteBooking(int id) throws DataAccessException{
+		bookingRepository.deleteById(id);
+	}
 }

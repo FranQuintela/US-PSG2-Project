@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.repository;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.model.Booking;
 
@@ -32,14 +33,7 @@ import org.springframework.samples.petclinic.model.Booking;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface BookingRepository {
-
-	/**
-	 * Save a <code>Booking</code> to the data store, either inserting or updating it.
-	 * @param Booking the <code>Booking</code> to save
-	 * @see BaseEntity#isNew
-	 */
-	void save(Booking visit) throws DataAccessException;
+public interface BookingRepository extends CrudRepository<Booking, Integer>{
 
 	List<Booking> findByPetId(Integer petId);
 

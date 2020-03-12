@@ -88,14 +88,14 @@ public class Booking extends BaseEntity {
 	 * Getter for property date.
 	 * @return Value of property date.
 	 */
-	public LocalDate getExitDate() {
+	public LocalDate getExit_date() {
 		return this.exit_date;
 	}
 	/**
 	 * Setter for property date.
 	 * @param date New value of property date.
 	 */
-	public void setExitDate(LocalDate date) {
+	public void setExit_date(LocalDate date) {
 		this.exit_date = date;
 	}
 

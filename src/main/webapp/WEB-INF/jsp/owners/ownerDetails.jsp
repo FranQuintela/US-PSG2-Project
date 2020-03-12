@@ -77,13 +77,23 @@
                         <thead>
                         <tr>
                             <th><fmt:message key="bookingDate"/></th>
+                            <th><fmt:message key="exit_date"/></th>
                             <th><fmt:message key="details"/></th>
                         </tr>
                         </thead>
                         <c:forEach var="booking" items="${pet.bookings}">
                             <tr>
                                 <td><petclinic:localDate date="${booking.date}" pattern="yyyy-MM-dd"/></td>
+                                <td><petclinic:localDate date="${booking.exit_date}" pattern="yyyy/MM/dd"/></td>
                                 <td><c:out value="${booking.details}"/></td>
+                                <td>
+                                    <spring:url value="/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete" var="deleteUrl">
+                                        <spring:param name="ownerId" value="${owner.id}"/>
+                                        <spring:param name="petId" value="${pet.id}"/>
+                                        <spring:param name="bookingId" value="${booking.id}"/>
+                                    </spring:url>
+                                    <a href="${fn:escapeXml(deleteUrl)}"><fmt:message key="deleteBooking"/></a>
+                                </td>
                             </tr>
                         </c:forEach>
                         <tr>

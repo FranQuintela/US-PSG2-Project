@@ -52,4 +52,4 @@ INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
-INSERT INTO bookings VALUES (1, 7, '2013-01-01','2013-02-02', 'care with the food');
+INSERT INTO bookings VALUES (1, 1, '2013-01-01','2013-02-02', 'care with the food');
