@@ -70,6 +70,15 @@
                             <tr>
                                 <td><petclinic:localDate date="${visit.date}" pattern="yyyy-MM-dd"/></td>
                                 <td><c:out value="${visit.description}"/></td>
+                                <td>
+                                    <spring:url value="/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete" var="deleteUrl">
+                                        <spring:param name="ownerId" value="${owner.id}"/>
+                                        <spring:param name="petId" value="${pet.id}"/>
+                                        <spring:param name="visitId" value="${visit.id}"/>
+
+                                    </spring:url>
+                                    <a href="${fn:escapeXml(deleteUrl)}"><fmt:message key="deleteVisit"/></a>
+                                </td>
                             </tr>
                         </c:forEach>
                         <tr>

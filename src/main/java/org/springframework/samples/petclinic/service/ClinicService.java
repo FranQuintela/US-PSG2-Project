@@ -122,5 +122,8 @@ public class ClinicService {
 	public void deleteOwner(Owner owner) throws DataAccessException {
 		ownerRepository.delete(owner.getId());
 	}
-
+	@Transactional
+	public void deleteVisit(int id) throws DataAccessException {
+		visitRepository.deleteById(id);
+	}
 }
