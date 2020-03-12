@@ -56,7 +56,7 @@
         <br/>
         <b><fmt:message key="previousBooking"/></b>
         <table class="table table-striped">
-            <tr>
+            <tr class="brown">
                 <th><fmt:message key="bookingDate"/></th>
                 <th><fmt:message key="exit_date"/></th>
                 <th><fmt:message key="details"/></th>
