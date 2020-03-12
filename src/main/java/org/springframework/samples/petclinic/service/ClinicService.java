@@ -30,10 +30,13 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.BookingRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,12 +58,18 @@ public class ClinicService {
 	private VisitRepository	visitRepository;
 
 
+	private BookingRepository bookingRepository;
+
 	@Autowired
-	public ClinicService(final PetRepository petRepository, final VetRepository vetRepository, final OwnerRepository ownerRepository, final VisitRepository visitRepository) {
+
+	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
+			VisitRepository visitRepository, BookingRepository bookingRepository){
+
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
+		this.bookingRepository = bookingRepository;
 	}
 
 	@Transactional(readOnly = true)
@@ -141,6 +150,21 @@ public class ClinicService {
 	public void deleteOwner(Owner owner) throws DataAccessException {
 		ownerRepository.delete(owner.getId());
 	}
+
+	// BOOKING
+	@Transactional
+	public void saveBooking(Booking booking) throws DataAccessException {
+		bookingRepository.save(booking);
+	}
+
+	public Collection<Booking> findBookingsByPetId(int petId) {
+		return bookingRepository.findByPetId(petId);
+	}
+	
+	@Transactional
+	public void deleteBooking(int id) throws DataAccessException{
+		bookingRepository.deleteById(id);
+  }
 	@Transactional
 	public void deleteVisit(int id) throws DataAccessException {
 		visitRepository.deleteById(id);
