@@ -164,5 +164,9 @@ public class ClinicService {
 	@Transactional
 	public void deleteBooking(int id) throws DataAccessException{
 		bookingRepository.deleteById(id);
+  }
+	@Transactional
+	public void deleteVisit(int id) throws DataAccessException {
+		visitRepository.deleteById(id);
 	}
 }
