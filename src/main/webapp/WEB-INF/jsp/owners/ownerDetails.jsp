@@ -10,7 +10,7 @@
     <h2><fmt:message key="ownerInfo"/></h2>
 
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="ownerDetails">
         <tr>
             <th><fmt:message key="firstName"/></th>
             <td><b><c:out value="${owner.firstName} ${owner.lastName}"/></b></td>

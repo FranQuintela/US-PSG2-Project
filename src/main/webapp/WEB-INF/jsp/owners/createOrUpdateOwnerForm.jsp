@@ -31,6 +31,7 @@
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-default" type="submit"><fmt:message key="updateOwner"/></button>
+    					<a class="btn btn-default" href="/owners/${owner.id}/delete"><fmt:message key="deleteOwner"/></a>
                     </c:otherwise>
                 </c:choose>
             </div>
