@@ -11,12 +11,12 @@
 <body>
 <petclinic:bodyHeader menuName="${pageName}"/>
 
-<div class="container-fluid">
+<div class="container-fluid transparent">
     <div class="container xd-container">
 
         <jsp:doBody/>
 
-        <petclinic:pivotal/>
+         <!-- <petclinic:pivotal/> -->
     </div>
 </div>
 <petclinic:footer/>

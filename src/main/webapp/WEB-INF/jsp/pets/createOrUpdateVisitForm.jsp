@@ -54,7 +54,7 @@
         <br/>
         <b><fmt:message key="previousVisit"/></b>
         <table class="table table-striped">
-            <tr>
+            <tr class="brown">
                 <th><fmt:message key="date"/></th>
                 <th><fmt:message key="desc"/></th>
             </tr>

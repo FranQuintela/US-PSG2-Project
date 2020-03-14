@@ -20,10 +20,10 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.samples.petclinic.model.BaseEntity;
-import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.Booking;
 
 /**
- * Repository class for <code>Visit</code> domain objects All method names are compliant
+ * Repository class for <code>Booking</code> domain objects All method names are compliant
  * with Spring Data naming conventions so this interface can easily be extended for Spring
  * Data See here:
  * http://static.springsource.org/spring-data/jpa/docs/current/reference/html/jpa.repositories.html#jpa.query-methods.query-creation
@@ -33,9 +33,8 @@ import org.springframework.samples.petclinic.model.Visit;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface VisitRepository extends CrudRepository<Visit, Integer>{
+public interface BookingRepository extends CrudRepository<Booking, Integer>{
 
-
-	List<Visit> findByPetId(Integer petId);
+	List<Booking> findByPetId(Integer petId);
 
 }

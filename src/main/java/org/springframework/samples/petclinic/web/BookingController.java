@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,12 +36,12 @@ import org.springframework.web.bind.annotation.*;
  * @author Michael Isvy
  */
 @Controller
-public class VisitController {
+public class BookingController {
 
 	private final ClinicService clinicService;
 
 	@Autowired
-	public VisitController(ClinicService clinicService) {
+	public BookingController(ClinicService clinicService) {
 		this.clinicService = clinicService;
 	}
 
@@ -58,40 +58,40 @@ public class VisitController {
 	 * @param petId
 	 * @return Pet
 	 */
-	@ModelAttribute("visit")
-	public Visit loadPetWithVisit(@PathVariable("petId") int petId) {
+	@ModelAttribute("booking")
+	public Booking loadPetWithBooking(@PathVariable("petId") int petId) {
 		Pet pet = this.clinicService.findPetById(petId);
-		Visit visit = new Visit();
-		pet.addVisit(visit);
-		return visit;
+		Booking booking = new Booking();
+		pet.addBooking(booking);
+		return booking;
 	}
 
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
-	@GetMapping(value = "/owners/*/pets/{petId}/visits/new")
-	public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
-		return "pets/createOrUpdateVisitForm";
+	@GetMapping(value = "/owners/*/pets/{petId}/bookings/new")
+	public String initNewBookingForm(@PathVariable("petId") int petId, Map<String, Object> model) {
+		return "pets/createOrUpdateBookingForm";
 	}
 
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
-	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new")
-	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
+	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/new")
+	public String processNewBookingForm(@Valid Booking booking, BindingResult result) {
 		if (result.hasErrors()) {
-			return "pets/createOrUpdateVisitForm";
+			return "pets/createOrUpdateBookingForm";
 		}
 		else {
-			this.clinicService.saveVisit(visit);
+			this.clinicService.saveBooking(booking);
 			return "redirect:/owners/{ownerId}";
 		}
 	}
 
-	@GetMapping(value = "/owners/*/pets/{petId}/visits")
-	public String showVisits(@PathVariable int petId, Map<String, Object> model) {
-		model.put("visits", this.clinicService.findPetById(petId).getVisits());
-		return "visitList";
+	@GetMapping(value = "/owners/*/pets/{petId}/bookings")
+	public String showBookings(@PathVariable int petId, Map<String, Object> model) {
+		model.put("bookings", this.clinicService.findPetById(petId).getBookings());
+		return "bookingList";
 	}
-	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete", method = RequestMethod.GET)
-	public String deleteVisit(Model model, @PathVariable("visitId") int visitId){
-		this.clinicService.deleteVisit(visitId);
+	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete", method = RequestMethod.GET)
+	public String deletePet(Model model, @PathVariable("bookingId") int bookingId){
+		this.clinicService.deleteBooking(bookingId);
 		return "redirect:/owners/{ownerId}";
 	}
 }
