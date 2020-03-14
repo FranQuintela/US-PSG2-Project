@@ -10,14 +10,27 @@
     <h2><fmt:message key="vetInfo"/></h2>
 
     <table class="table table-striped">
-        <tr>
+      
+       <thead>  <tr>
             <th><fmt:message key="firstName"/></th>
+             <th><fmt:message key="specialities"/></th>
+        </tr></thead>
+        <tr>
             <td><c:out value="${vet.firstName} ${vet.lastName}"/></td>
+          
+            <td>
+                    <c:forEach var="specialty" items="${vet.specialties}">
+                        <c:out value="${specialty.name} "/>
+                    </c:forEach>
+                    <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
+                </td>
         </tr>
     </table>
     
     <spring:url value="{vetId}/delete" var="deleteUrl">
         <spring:param name="vetId" value="${vet.id}"/>
     </spring:url>
+    	<a class="btn btn-default" href="/vets/${vet.id}/edit"><fmt:message key="updateVet"/></a>
     <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default"><fmt:message key="deleteVet"/></a>
+
 </petclinic:layout>

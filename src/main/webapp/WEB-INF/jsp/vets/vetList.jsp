@@ -34,6 +34,7 @@
         </c:forEach>
         </tbody>
     </table>
+    <table><tr><td><a class="btn btn-default" href="/vets/new"><fmt:message key="addVet"/></a></td></tr></table>
 
     <table class="table-buttons">
         <tr>
