@@ -52,4 +52,11 @@ INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
+/**Booking**/
+
 INSERT INTO bookings VALUES (1, 1, '2013-01-01','2013-02-02', 'care with the food');
+
+/**Causes**/
+
+INSERT INTO causes values (1, 'Lets fight Coronavirus!', 'Campaña para acabar con el Coronavirus en los barrios más necesitados', 40000, 'Asociación Entre Amigos');
+INSERT INTO causes values (2, 'Contra los de la música en el balcón', 'En estos días se ha impuesto una nueva especie ruidosa que amenaza con el bienestar de los barrios, todos los días sacan sus altavoces al balcón a las 19:40 para molestar a sus vecinos', 70000, 'Por favor dejadme estudiar');
