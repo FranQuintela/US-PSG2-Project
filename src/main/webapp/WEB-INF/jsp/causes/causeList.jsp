@@ -19,7 +19,29 @@
         </tr>
         </thead>
         <tbody>
-        
+         <c:forEach items="${causes}" var="cause">
+            <tr>
+                <td>                
+                    <spring:url value="/causes/{causeId}" var="causeUrl">
+                        <spring:param name="causeId" value="${cause.id}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(causeUrl)}"><c:out value="${cause.name} "/></a>
+                </td>
+                <td>
+                   <c:out value="${cause.description} "/>
+                </td>
+                 <td>
+                    <c:out value="Here should be amount achieved"/>
+                   <%-- <c:out value="${cause.achieved} "/> --%>
+                </td>
+                 <td>
+                   <c:out value="${cause.budgetTarget} "/>
+                </td>
+                 <td>
+                   <c:out value="${cause.organization} "/>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
     <table><tr><td><a class="btn btn-default" href="/causes/new"><fmt:message key="addcauses"/></a></td></tr></table>

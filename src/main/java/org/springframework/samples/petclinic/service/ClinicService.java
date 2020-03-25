@@ -31,12 +31,13 @@ import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.model.Booking;
+import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.samples.petclinic.repository.BookingRepository;
-
+import org.springframework.samples.petclinic.repository.CauseRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,19 +58,22 @@ public class ClinicService {
 
 	private VisitRepository	visitRepository;
 
-
 	private BookingRepository bookingRepository;
+
+	private CauseRepository causeRepository;
 
 	@Autowired
 
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository, BookingRepository bookingRepository){
+			VisitRepository visitRepository, BookingRepository bookingRepository, CauseRepository causeRepository){
 
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
 		this.bookingRepository = bookingRepository;
+		this.causeRepository = causeRepository;
+
 	}
 
 	@Transactional(readOnly = true)
@@ -164,9 +168,17 @@ public class ClinicService {
 	@Transactional
 	public void deleteBooking(int id) throws DataAccessException{
 		bookingRepository.deleteById(id);
-  }
+  	}
 	@Transactional
 	public void deleteVisit(int id) throws DataAccessException {
 		visitRepository.deleteById(id);
+	}
+	@Transactional(readOnly = true)
+	@Cacheable(value = "causes")
+	public Collection<Cause> findCauses() throws DataAccessException {
+		return this.causeRepository.findAll();
+	}
+	public Cause findCauseById(int causeId) throws DataAccessException{
+		return causeRepository.findCauseById(causeId);
 	}
 }

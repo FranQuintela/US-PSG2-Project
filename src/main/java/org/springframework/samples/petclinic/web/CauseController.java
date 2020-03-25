@@ -49,14 +49,20 @@ public class CauseController {
 		"/causes"
 	})
 	public String showCauseList(final Map<String, Object> model) {
-		// Here we are returning an object of type 'Vets' rather than a collection of Vet
-		// objects
-		// so it is simpler for Object-Xml mapping
-		Cause causes = new Cause();
-		
-		//Cause.getCauseList().addAll(this.clinicService.findCauses());
-		model.put("causes", causes);
+
+		model.put("causes", this.clinicService.findCauses());
 		return "causes/causeList";
 	}
 
+	/**
+	 * Custom handler for displaying an cause.
+	 * @param causeId the ID of the cause to display
+	 * @return a ModelMap with the model attributes for the view
+	 */
+	@GetMapping("/causes/{causeId}")
+	public ModelAndView showCause(@PathVariable("causeId") int causeId) {
+		ModelAndView mav = new ModelAndView("causes/causeDetails");
+		mav.addObject(this.clinicService.findCauseById(causeId));
+		return mav;
+	}
 }
