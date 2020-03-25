@@ -12,8 +12,10 @@
         <thead>
         <tr>
             <th><fmt:message key="name"/></th>
+            <th><fmt:message key="description"/></th>
             <th><fmt:message key="achieved"/></th>
             <th><fmt:message key="target"/></th>
+            <th><fmt:message key="organization"/></th>
         </tr>
         </thead>
         <tbody>
