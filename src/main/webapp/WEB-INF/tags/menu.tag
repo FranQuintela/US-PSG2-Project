@@ -15,6 +15,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
         </div>
         <div class="navbar-collapse collapse" id="main-navbar">
@@ -23,6 +24,11 @@
                 <petclinic:menuItem active="${name eq 'home'}" url="/" title="home page">
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                     <span><fmt:message key="home"/></span>
+                </petclinic:menuItem>
+
+				<petclinic:menuItem active="${name eq 'causes'}" url="/causes" title="causes">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    <span><fmt:message key="causes"/></span>
                 </petclinic:menuItem>
 
                 <petclinic:menuItem active="${name eq 'owners'}" url="/owners/find" title="find owners">
