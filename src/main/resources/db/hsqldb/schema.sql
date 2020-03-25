@@ -83,3 +83,13 @@ CREATE TABLE causes(
 );
 
 /**TODO: Falta hacer la asociación**/
+
+CREATE TABLE donations (
+  id         INTEGER IDENTITY PRIMARY KEY,
+  client     VARCHAR(30),
+  date DATE,
+  amount	 DOUBLE NOT NULL,
+  cause_id    INTEGER NOT NULL,
+);
+ALTER TABLE donations ADD CONSTRAINT fk_donations_causes FOREIGN KEY (cause_id) REFERENCES causes (id);
+CREATE INDEX donations_client ON donations (client);
