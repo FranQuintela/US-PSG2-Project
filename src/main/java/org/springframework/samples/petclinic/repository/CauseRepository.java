@@ -24,6 +24,7 @@ import javax.validation.Valid;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Donation;
 
 /**
  * Repository class for <code>Cause</code> domain objects All method names are compliant
@@ -61,6 +62,7 @@ public interface CauseRepository {
 	 */
 
 	 void deleteCause(int id) throws DataAccessException;
+	 Collection<Donation> findDonations(int causeId) throws DataAccessException;
 
 
 }
