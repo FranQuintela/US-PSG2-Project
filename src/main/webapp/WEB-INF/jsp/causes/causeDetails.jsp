@@ -27,8 +27,7 @@
                    <c:out value="${cause.description} "/>
                 </td>
                  <td>
-                    <c:out value="Here should be amount achieved"/>
-                   <%-- <c:out value="${cause.achieved} "/> --%>
+                    <c:out value="${cause.amountAchieved} "/>
                 </td>
                  <td>
                    <c:out value="${cause.budgetTarget} "/>
@@ -51,14 +50,13 @@
         </tr>
         </thead>
         <tbody>
-        	<c:forEach items="${donations}" var="donation">
+        	<c:forEach items="${cause.donations}" var="donation">
             <tr>
                 <td>
                     <c:out value="${donation.date}"/>
                 </td>
                 <td>
                     <c:out value="${donation.amount}"/>
-                   <%-- <c:out value="${cause.achieved} "/> --%>
                 </td>
                  <td>
                     <c:out value="${donation.client}"/>
@@ -72,7 +70,13 @@
     <spring:url value="{causeId}/delete" var="deleteUrl">
         <spring:param name="causeId" value="${cause.id}"/>
     </spring:url>
-    	<a class="btn btn-default" href="/causes/${cause.id}/edit"><fmt:message key="updateCause"/></a>
+    <a class="btn btn-default" href="/causes/${cause.id}/edit"><fmt:message key="updateCause"/></a>
+    
     <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default"><fmt:message key="deleteCause"/></a>
+
+    <spring:url value="/causes/{causeId}/donations/create" var="danationUrl">
+        <spring:param name="causeId" value="${cause.id}"/>
+    </spring:url>
+        <a class="btn btn-default" href="${fn:escapeXml(danationUrl)}"><c:out value="Donate"/></a>
 
 </petclinic:layout>

@@ -39,6 +39,7 @@ import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.samples.petclinic.repository.BookingRepository;
 import org.springframework.samples.petclinic.repository.CauseRepository;
+import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,10 +64,13 @@ public class ClinicService {
 
 	private CauseRepository causeRepository;
 
+	private DonationRepository donationRepository;
+
 	@Autowired
 
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository, BookingRepository bookingRepository, CauseRepository causeRepository){
+			VisitRepository visitRepository, BookingRepository bookingRepository, CauseRepository causeRepository, 
+			DonationRepository donationRepository){
 
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
@@ -74,6 +78,8 @@ public class ClinicService {
 		this.visitRepository = visitRepository;
 		this.bookingRepository = bookingRepository;
 		this.causeRepository = causeRepository;
+		this.donationRepository = donationRepository;
+
 
 	}
 
@@ -174,6 +180,7 @@ public class ClinicService {
 	public void deleteVisit(int id) throws DataAccessException {
 		visitRepository.deleteById(id);
 	}
+	// CAUSES
 	@Transactional(readOnly = true)
 	@Cacheable(value = "causes")
 	public Collection<Cause> findCauses() throws DataAccessException {
@@ -182,8 +189,12 @@ public class ClinicService {
 	public Cause findCauseById(int causeId) throws DataAccessException {
 		return causeRepository.findCauseById(causeId);
 	}
-
+	// DONATIONS
 	public Collection<Donation> findDonations(int causeId) throws DataAccessException {
 		return causeRepository.findDonations(causeId);
+	}
+	@Transactional
+	public void saveDonation(Donation donation) throws DataAccessException {
+		donationRepository.save(donation);
 	}
 }

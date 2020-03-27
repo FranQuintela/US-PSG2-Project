@@ -16,6 +16,7 @@
             <th><fmt:message key="achieved"/></th>
             <th><fmt:message key="target"/></th>
             <th><fmt:message key="organization"/></th>
+            <th><fmt:message key="donate"/></th>
         </tr>
         </thead>
         <tbody>
@@ -31,14 +32,19 @@
                    <c:out value="${cause.description} "/>
                 </td>
                  <td>
-                    <c:out value="Here should be amount achieved"/>
-                   <%-- <c:out value="${cause.achieved} "/> --%>
+                   <c:out value="${cause.amountAchieved} "/>
                 </td>
                  <td>
                    <c:out value="${cause.budgetTarget} "/>
                 </td>
                  <td>
                    <c:out value="${cause.organization} "/>
+                </td>
+                <td>                
+                    <spring:url value="/causes/{causeId}/donations/create" var="danationUrl">
+                        <spring:param name="causeId" value="${cause.id}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(danationUrl)}"><c:out value="Donate"/></a>
                 </td>
             </tr>
         </c:forEach>
