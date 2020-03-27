@@ -87,7 +87,7 @@ CREATE TABLE causes(
 CREATE TABLE donations (
   id         INTEGER IDENTITY PRIMARY KEY,
   client     VARCHAR(30),
-  date DATE,
+  date_of_donation DATE,
   amount	 DOUBLE NOT NULL,
   cause_id    INTEGER NOT NULL,
 );

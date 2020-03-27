@@ -51,21 +51,21 @@
         </tr>
         </thead>
         <tbody>
-         <%-- <c:forEach items="${donations}" var="donation"> --%>
+        	<c:forEach items="${donations}" var="donation">
             <tr>
                 <td>
-                    <c:out value="Here should be date"/>
+                    <c:out value="${donation.date}"/>
                 </td>
                 <td>
-                    <c:out value="Here should be amount"/>
+                    <c:out value="${donation.amount}"/>
                    <%-- <c:out value="${cause.achieved} "/> --%>
                 </td>
                  <td>
-                    <c:out value="Here should be client"/>
+                    <c:out value="${donation.client}"/>
                 </td>
 
             </tr>
-        <%-- </c:forEach> --%>
+        	</c:forEach>
         </tbody>
     </table>
     

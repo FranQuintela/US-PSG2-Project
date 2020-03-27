@@ -62,8 +62,8 @@ INSERT INTO causes values (1, 'Lets fight Coronavirus!', 'Campaña para acabar c
 INSERT INTO causes values (2, 'Contra los de la música en el balcón', 'En estos días se ha impuesto una nueva especie ruidosa que amenaza con el bienestar de los barrios, todos los días sacan sus altavoces al balcón a las 19:40 para molestar a sus vecinos', 70000, 'Por favor dejadme estudiar');
 
 /**Donations**/
-INSERT INTO donations VALUES (1, 'Andres Aguilar', '2019-03-22', '101', 1);
-INSERT INTO donations VALUES (2, 'Francisco Jose Quintela', '2019-03-26', '167.54', 2);
-INSERT INTO donations VALUES (3, 'Francisco Jose Perrejon', '2019-03-29', '283.92', 1);
-INSERT INTO donations VALUES (4, 'Ramon Javier Morales', '2019-04-02', '89.23', 2);
-INSERT INTO donations VALUES (5, 'Alejandro Gonzalez', '2019-04-02', '141.34', 1);
+INSERT INTO donations VALUES (1, 'Andres Aguilar', '2019-11-22', '101', 1);
+INSERT INTO donations VALUES (2, 'Francisco Jose Quintela', '2019-08-26', '167.54', 2);
+INSERT INTO donations VALUES (3, 'Francisco Jose Perrejon', '2020-01-29', '283.92', 1);
+INSERT INTO donations VALUES (4, 'Ramon Javier Morales', '2020-02-07', '89.23', 2);
+INSERT INTO donations VALUES (5, 'Alejandro Gonzalez', '2019-09-02', '141.34', 1);

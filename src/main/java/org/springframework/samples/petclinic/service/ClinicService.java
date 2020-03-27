@@ -32,6 +32,7 @@ import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
@@ -178,7 +179,11 @@ public class ClinicService {
 	public Collection<Cause> findCauses() throws DataAccessException {
 		return this.causeRepository.findAll();
 	}
-	public Cause findCauseById(int causeId) throws DataAccessException{
+	public Cause findCauseById(int causeId) throws DataAccessException {
 		return causeRepository.findCauseById(causeId);
+	}
+
+	public Collection<Donation> findDonations(int causeId) throws DataAccessException {
+		return causeRepository.findDonations(causeId);
 	}
 }

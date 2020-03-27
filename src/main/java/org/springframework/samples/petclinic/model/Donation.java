@@ -23,12 +23,12 @@ public class Donation extends BaseEntity{
 	private Double amount;
 	
     @NotNull
-    @Column(name =  "date")
+    @Column(name =  "date_of_donation")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate date;
 	
     @NotBlank
-    @Column(name="client")
+    @Column(name = "client")
     private String client;
     
 	public Double getAmount() {
@@ -39,6 +39,24 @@ public class Donation extends BaseEntity{
 		this.amount = amount;
 	}
 	
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+
+
 	@ManyToOne
     @JoinColumn(name = "cause_id")
     private Cause cause;

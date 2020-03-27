@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
 import java.util.List;
 
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 
@@ -60,7 +62,10 @@ public class CauseController {
 	 * @return a ModelMap with the model attributes for the view
 	 */
 	@GetMapping("/causes/{causeId}")
-	public ModelAndView showCause(@PathVariable("causeId") int causeId) {
+	public ModelAndView showCause(@PathVariable("causeId") int causeId, final Map<String, Object> model) {
+		Collection<Donation> donations;
+    	donations = this.clinicService.findDonations(causeId);
+        model.put("donations", donations);
 		ModelAndView mav = new ModelAndView("causes/causeDetails");
 		mav.addObject(this.clinicService.findCauseById(causeId));
 		return mav;
