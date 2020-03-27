@@ -22,7 +22,6 @@ public class Donation extends BaseEntity{
 	@Min(0)
 	private Double amount;
 	
-    @NotNull
     @Column(name =  "date_of_donation")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate date;
