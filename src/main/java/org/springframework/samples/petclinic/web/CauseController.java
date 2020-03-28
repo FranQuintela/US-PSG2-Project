@@ -49,6 +49,7 @@ public class CauseController {
 		"/causes"
 	})
 	public String showCauseList(final Map<String, Object> model) {
+<<<<<<< Updated upstream
 
 		model.put("causes", this.clinicService.findCauses());
 		return "causes/causeList";
