@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 
@@ -44,7 +47,7 @@ public class DonationController {
 	private final ClinicService clinicService;
 
 	@Autowired
-	public DonationController(final ClinicService clinicService) {
+	public DonationController(final ClinicService clinicService ) {
 		this.clinicService = clinicService;
 	}
 
@@ -65,7 +68,11 @@ public class DonationController {
 
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
 	@GetMapping(value = "/causes/{causeId}/donations/create")
-	public String initNewDonationForm(@PathVariable("causeId") int causeId, Map<String, Object> model) {
+	public String initNewDonationForm(@PathVariable("causeId") int causeId, Model model) {
+		List<String> owners = this.clinicService.findOwners().stream().map(n -> n.getFirstName()+" "+n.getLastName()).collect(Collectors.toList());
+		
+		model.addAttribute("clients", owners);
+
 		return "causes/donations/createOrUpdateDonationForm";
 	}
 
