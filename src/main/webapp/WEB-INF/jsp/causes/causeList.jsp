@@ -44,7 +44,7 @@
                     <spring:url value="/causes/{causeId}/donations/create" var="danationUrl">
                         <spring:param name="causeId" value="${cause.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(danationUrl)}"><c:out value="Donate"/></a>
+                    <a href="${fn:escapeXml(danationUrl)}"><fmt:message key="donate"/></a>
                 </td>
             </tr>
         </c:forEach>
