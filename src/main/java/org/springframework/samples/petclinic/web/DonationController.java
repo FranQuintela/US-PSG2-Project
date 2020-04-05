@@ -1,36 +1,22 @@
 package org.springframework.samples.petclinic.web;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
-
-import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
-
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Juergen Hoeller
@@ -44,7 +30,7 @@ public class DonationController {
 	private final ClinicService clinicService;
 
 	@Autowired
-	public DonationController(final ClinicService clinicService) {
+	public DonationController(final ClinicService clinicService ) {
 		this.clinicService = clinicService;
 	}
 
@@ -65,7 +51,11 @@ public class DonationController {
 
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
 	@GetMapping(value = "/causes/{causeId}/donations/create")
-	public String initNewDonationForm(@PathVariable("causeId") int causeId, Map<String, Object> model) {
+	public String initNewDonationForm(@PathVariable("causeId") int causeId, Model model) {
+		List<String> owners = this.clinicService.findOwners().stream().map(n -> n.getFirstName()+" "+n.getLastName()).collect(Collectors.toList());
+		
+		model.addAttribute("clients", owners);
+
 		return "causes/donations/createOrUpdateDonationForm";
 	}
 

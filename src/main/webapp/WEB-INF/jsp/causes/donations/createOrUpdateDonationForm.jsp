@@ -22,7 +22,9 @@
                     <fmt:message var="amount" key="amount"/>
                     <fmt:message var="client" key="client"/>
                 <petclinic:inputField label="${amount}" name="amount"/>
-                <petclinic:inputField label="${client}" name="client"/>
+                <%-- <petclinic:inputField label="${client}" name="client"/> --%>
+                <petclinic:selectField label="${client}" name="client" names="${clients}" size="1"/>
+
             </div>
 
             <div class="form-group">

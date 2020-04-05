@@ -82,7 +82,10 @@ public class ClinicService {
 
 
 	}
-
+	@Transactional(readOnly = true)
+	public Collection<Owner> findOwners() throws DataAccessException {
+		return this.ownerRepository.findOwners();
+	}
 	@Transactional(readOnly = true)
 	public Collection<PetType> findPetTypes() throws DataAccessException {
 		return this.petRepository.findPetTypes();
