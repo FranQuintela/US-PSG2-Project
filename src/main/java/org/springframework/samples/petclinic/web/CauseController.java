@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CauseController {
 
+	private static final String VIEWS_CAUSE_CREATE_OR_UPDATE_FORM = "causes/createOrUpdateCauseForm";
+
 	private final ClinicService clinicService;
 
 
@@ -50,5 +52,23 @@ public class CauseController {
 		ModelAndView mav = new ModelAndView("causes/causeDetails");
 		mav.addObject(this.clinicService.findCauseById(causeId));
 		return mav;
+	}
+
+	@GetMapping(value = "/causes/new")
+	public String initCreationForm(ModelMap model){
+		Cause cause = new Cause();
+		model.put("cause", cause);
+		return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
+	}
+
+	@PostMapping(value = "/causes/new")
+	public String processCreationForm (@Valid Cause cause, BindingResult results){
+		if(results.hasErrors()){
+			return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
+		}
+		else {
+			this.clinicService.saveCause(cause);
+			return "redirect:/causes/" + cause.getId();
+		}
 	}
 }

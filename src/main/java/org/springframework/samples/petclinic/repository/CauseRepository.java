@@ -60,5 +60,7 @@ public interface CauseRepository {
 	 void deleteCause(int id) throws DataAccessException;
 	 Collection<Donation> findDonations(int causeId) throws DataAccessException;
 
+	
+
 
 }

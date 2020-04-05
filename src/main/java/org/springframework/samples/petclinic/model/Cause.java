@@ -11,6 +11,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
@@ -20,15 +22,19 @@ import org.springframework.beans.support.PropertyComparator;
 public class Cause extends BaseEntity{
 
     @Column(name = "name")
+    @NotEmpty
     private String name;
 
     @Column(name= "description")
+    @NotEmpty
     private String description;
 
     @Column (name = "budget_target")
-    private Integer budgetTarget;
+    @NotNull
+    private Double budgetTarget;
 
     @Column (name = "organization")
+    @NotEmpty
     private String organization;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cause")
@@ -39,7 +45,7 @@ public class Cause extends BaseEntity{
     public Cause() {
     }
 
-    public Cause(String name, String description, Integer budgetTarget, String organization) {
+    public Cause(String name, String description, Double budgetTarget, String organization) {
         this.name = name;
         this.description = description;
         this.budgetTarget = budgetTarget;
@@ -62,11 +68,11 @@ public class Cause extends BaseEntity{
         this.description = description;
     }
 
-    public Integer getBudgetTarget() {
+    public Double getBudgetTarget() {
         return this.budgetTarget;
     }
 
-    public void setbudgetTarget(Integer budgetTarget) {
+    public void setbudgetTarget(Double budgetTarget) {
         this.budgetTarget = budgetTarget;
     }
 
@@ -88,7 +94,7 @@ public class Cause extends BaseEntity{
         return this;
     }
 
-    public Cause budgetTarget(Integer budgetTarget) {
+    public Cause budgetTarget(Double budgetTarget) {
         this.budgetTarget = budgetTarget;
         return this;
     }
