@@ -34,15 +34,15 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | FQUINTELA     | RMORALES       | AGONZALEZ      | FPEREJON       | AAGUILAR       | 
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  |
-| Day 1         |               |:smiley:        |:neutral_face:  |                |                |
-| Day 2         |               |:smiley:        |:smiley:        |                |                |
-| Day 3         |               |-               |-               |                |                |
-| Day 4         |               |:smiley:        |:smiley:        |                |                |
-| Day 5         |               |:smiley:        |:smiley:        |                |                |
-| Day 6         |               |:smiley:        |:smiley:        |                |                |
-| Day 7         |               |-               |-               |                |                |
-| Day 8         |               |-               |-               |                |                |
-| Day 9         |:smiley:       |-               |-               |-               |-               |
+| Day 1         |               |:smiley:        |:neutral_face:  |-               |                |
+| Day 2         |               |:smiley:        |:smiley:        |-               |                |
+| Day 3         |               |-               |-               |:neutral_face:  |                |
+| Day 4         |               |:smiley:        |:smiley:        |:smiley:        |                |
+| Day 5         |               |:smiley:        |:smiley:        |-               |                |
+| Day 6         |               |:smiley:        |:smiley:        |-               |                |
+| Day 7         |               |-               |-               |-               |                |
+| Day 8         |               |-               |-               |-               |                |
+| Day 9         |:smiley:       |-               |-               |:smiley:        |-               |
 | Day 10        |               |:smiley:        |:smiley:        |                |                |
 | Day 11        |               |:smiley:        |:smiley:        |                |                |
 | Day 12        |               |:smiley:        |:smiley:        |                |                |
