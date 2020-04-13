@@ -61,14 +61,16 @@ public class DonationController {
 
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
 	@PostMapping(value = "/causes/{causeId}/donations/create")
-	public String processNewCauseForm(@PathVariable("causeId") int causeId, @Valid Donation donation, BindingResult result) {
+	public String processNewCauseForm(@PathVariable("causeId") int causeId, @Valid Donation donation, BindingResult result, Model model) {
 		Cause cause = this.clinicService.findCauseById(causeId);
 
-		if(cause.getAmountAchieved() + donation.getAmount() >= cause.getBudgetTarget()){
+		if(cause.getAmountAchieved() + donation.getAmount() > cause.getBudgetTarget()){
 			result.rejectValue("amount", "error.amount", "You cant exceed the budget target of the cause");
 		}
 
 		if (result.hasErrors()) {
+			List<String> owners = this.clinicService.findOwners().stream().map(n -> n.getFirstName()+" "+n.getLastName()).collect(Collectors.toList());	
+			model.addAttribute("clients", owners);
 			return "causes/donations/createOrUpdateDonationForm";
 		}
 		else {

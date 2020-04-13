@@ -65,18 +65,11 @@
             </tr>
         	</c:forEach>
         </tbody>
-    </table>
-    
-    <spring:url value="{causeId}/delete" var="deleteUrl">
-        <spring:param name="causeId" value="${cause.id}"/>
-    </spring:url>
-    <a class="btn btn-default" href="/causes/${cause.id}/edit"><fmt:message key="updateCause"/></a>
-    
-    <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default"><fmt:message key="deleteCause"/></a>
+    </table>   
 
     <spring:url value="/causes/{causeId}/donations/create" var="danationUrl">
         <spring:param name="causeId" value="${cause.id}"/>
     </spring:url>
-        <a class="btn btn-default" href="${fn:escapeXml(danationUrl)}"><c:out value="Donate"/></a>
+        <a class="btn btn-default" href="${fn:escapeXml(danationUrl)}"><fmt:message key="donate"/></a>
 
 </petclinic:layout>
