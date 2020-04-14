@@ -34,16 +34,21 @@ In the retrospective meeting, the team has a discussion about those results.
 
 | Day           | FQUINTELA     | RMORALES       | AGONZALEZ      | FPEREJON       | AAGUILAR       | 
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  |
-| Day 1         |:smiley:       |:smiley:        |:neutral_face:  |-               |-               |
-| Day 2         |-              |:smiley:        |:smiley:        |-               |-               |
-| Day 3         |-              |-               |-               |:neutral_face:  |:smiley:        |
-| Day 4         |:smiley:       |:smiley:        |:smiley:        |:smiley:        |:smiley:        |
-| Day 5         |:smiley:       |:smiley:        |:smiley:        |-               |-               |
-| Day 6         |-              |:smiley:        |:smiley:        |-               |-               |
-| Day 7         |:smiley:       |-               |-               |-               |-               |
-| Day 8         |-              |-               |-               |-               |-               |
-| Day 9         |:smiley:       |-               |-               |:smiley:        |:neutral_face:  |
-| Day 10        |-              |:smiley:        |:smiley:        |                |:neutral_face:  |
-| Day 11        |-              |:smiley:        |:smiley:        |                |-               |
-| Day 12        |-              |:smiley:        |:smiley:        |                |-               |
+| 25/03         |:smiley:       |:smiley:        |:neutral_face:  |-               |-               |
+| 26/03         |-              |:smiley:        |:smiley:        |-               |-               |
+| 27/03         |-              |-               |-               |:neutral_face:  |:smiley:        |
+| 30/03         |:smiley:       |:smiley:        |:smiley:        |:smiley:        |:smiley:        |
+| 31/03         |:smiley:       |:smiley:        |:smiley:        |-               |-               |
+| 01/04         |-              |:smiley:        |:smiley:        |-               |-               |
+| 02/04         |:smiley:       |-               |-               |-               |-               |
+| 03/04         |-              |-               |-               |-               |-               |
+| 05/04         |:smiley:       |-               |-               |:smiley:        |:neutral_face:  |
+| 13/04         |-              |:smiley:        |:smiley:        |                |:neutral_face:  |
+| 14/04         |-              |:smiley:        |-               |-               |-               |
+| 15/04         |               |                |                |                |                |
+| 16/04         |               |                |                |                |                |
+| 17/04         |               |                |                |                |                |
+| 20/04         |               |                |                |                |                |
+| 21/04         |               |                |                |                |                |
+| 22/04         |               |                |                |                |                |
 
