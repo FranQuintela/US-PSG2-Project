@@ -49,10 +49,10 @@ public class BookingValidator implements Validator {
 
 		for (Booking b : bookings) {
 			if (!b.equals(booking)) {
-				if (b.getExit_date().isAfter(fecha)) {
-					anterior = booking.getExit_date().isBefore(b.getDate()) || booking.getExit_date().isEqual(b.getDate());
-					solape = !anterior && fecha.isBefore(b.getDate()) && (booking.getExit_date().isAfter(b.getDate()) || !booking.getExit_date().isEqual(b.getDate())) || fecha.isEqual(b.getDate());
-					estaContenida = fecha.isAfter(b.getDate()) && fecha.isBefore(b.getExit_date());
+				if (b.getExitDate().isAfter(fecha)) {
+					anterior = booking.getExitDate().isBefore(b.getDate()) || booking.getExitDate().isEqual(b.getDate());
+					solape = !anterior && fecha.isBefore(b.getDate()) && (booking.getExitDate().isAfter(b.getDate()) || !booking.getExitDate().isEqual(b.getDate())) || fecha.isEqual(b.getDate());
+					estaContenida = fecha.isAfter(b.getDate()) && fecha.isBefore(b.getExitDate());
 
 					if (solape || estaContenida) {
 						break;
@@ -66,11 +66,11 @@ public class BookingValidator implements Validator {
 			errors.rejectValue("date", "The date coincides with some other date already taken", "The date coincides with some other date already taken");
 		}
 		//fecha salida anterior a la fecha de entrada
-		if (booking.getExit_date().isBefore(fecha)) {
+		if (booking.getExitDate().isBefore(fecha)) {
 			errors.rejectValue("exit_date", "The arrival date must be prior to the departure date", "The arrival date must be prior to the departure date");
 		}
 		//fecha menos de un día
-		if (booking.getExit_date().isEqual(fecha)) {
+		if (booking.getExitDate().isEqual(fecha)) {
 			errors.rejectValue("exit_date", "The booking must be of at least one night", "The booking must be of at least one night");
 		}
 		//detalles vacios

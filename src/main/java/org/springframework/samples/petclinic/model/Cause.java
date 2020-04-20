@@ -128,7 +128,7 @@ public class Cause extends BaseEntity{
     
 
     public Double getAmountAchieved() {
-        return this.donations.stream().mapToDouble(d -> d.getAmount()).sum();
+        return this.donations.stream().mapToDouble(Donation::getAmount).sum();
     }
 
 }

@@ -34,8 +34,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -152,7 +150,7 @@ public class VetController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/vets/{vetId}/delete", method = RequestMethod.GET)
+	@GetMapping(value = "/vets/{vetId}/delete")
 	public String deleteVet(Model model, @PathVariable("vetId") int vetId){
 		this.clinicService.deleteVet(vetId);
 		return "redirect:/vets";

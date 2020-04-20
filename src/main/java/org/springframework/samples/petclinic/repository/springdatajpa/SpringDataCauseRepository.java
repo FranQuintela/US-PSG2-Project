@@ -19,7 +19,6 @@ package org.springframework.samples.petclinic.repository.springdatajpa;
 
 import java.util.Collection;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -40,17 +39,17 @@ public interface SpringDataCauseRepository extends CauseRepository, Repository<C
 
 	@Override
     @Query("SELECT c FROM Cause c WHERE c.id =:causeid")
-    public Cause findCauseById(@Param("causeid") int causeId) throws DataAccessException;
+    public Cause findCauseById(@Param("causeid") int causeId)  ;
 
     @Override
 	@Query("SELECT cause FROM Cause cause WHERE cause.id =:id")
-	public Cause findById(@Param("id") int id) throws DataAccessException;
+	public Cause findById(@Param("id") int id)  ;
 	
 	@Modifying
 	@Query("DELETE FROM Cause c WHERE c.id =:causeid")
-	void deleteCause(int causeid) throws DataAccessException;
+	void deleteCause(int causeid)  ;
 	
 	@Query("SELECT d FROM Donation d WHERE d.cause.id=:causeId")
-	Collection<Donation> findDonations(int causeId) throws DataAccessException;
+	Collection<Donation> findDonations(int causeId)  ;
 
 }

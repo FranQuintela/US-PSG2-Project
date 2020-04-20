@@ -33,8 +33,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author Juergen Hoeller
@@ -101,7 +99,7 @@ public class BookingController {
 		model.put("bookings", this.clinicService.findPetById(petId).getBookings());
 		return "bookingList";
 	}
-	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete", method = RequestMethod.GET)
+	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete")
 	public String deletePet(final Model model, @PathVariable("bookingId") final int bookingId) {
 		this.clinicService.deleteBooking(bookingId);
 		return "redirect:/owners/{ownerId}";
