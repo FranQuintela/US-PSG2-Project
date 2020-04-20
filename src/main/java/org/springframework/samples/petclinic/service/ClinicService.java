@@ -23,7 +23,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -83,51 +82,51 @@ public class ClinicService {
 
 	}
 	@Transactional(readOnly = true)
-	public Collection<Owner> findOwners() throws DataAccessException {
+	public Collection<Owner> findOwners()   {
 		return this.ownerRepository.findOwners();
 	}
 	@Transactional(readOnly = true)
-	public Collection<PetType> findPetTypes() throws DataAccessException {
+	public Collection<PetType> findPetTypes()   {
 		return this.petRepository.findPetTypes();
 	}
 	@Transactional(readOnly = true)
-	public List<Specialty> findSpecialties() throws DataAccessException {
+	public List<Specialty> findSpecialties()   {
 		return this.vetRepository.findSpecialties();
 	}
 
 	@Transactional(readOnly = true)
-	public Owner findOwnerById(final int id) throws DataAccessException {
+	public Owner findOwnerById(final int id)   {
 		return this.ownerRepository.findById(id);
 	}
 
 	@Transactional(readOnly = true)
-	public Collection<Owner> findOwnerByLastName(final String lastName) throws DataAccessException {
+	public Collection<Owner> findOwnerByLastName(final String lastName)   {
 		return this.ownerRepository.findByLastName(lastName);
 	}
 
 	@Transactional
-	public void saveOwner(final Owner owner) throws DataAccessException {
+	public void saveOwner(final Owner owner)   {
 		this.ownerRepository.save(owner);
 	}
 
 	@Transactional
-	public void saveVisit(final Visit visit) throws DataAccessException {
+	public void saveVisit(final Visit visit)   {
 		this.visitRepository.save(visit);
 	}
 
 	@Transactional(readOnly = true)
-	public Pet findPetById(final int id) throws DataAccessException {
+	public Pet findPetById(final int id)   {
 		return this.petRepository.findById(id);
 	}
 
 	@Transactional
-	public void savePet(final Pet pet) throws DataAccessException {
+	public void savePet(final Pet pet)   {
 		this.petRepository.save(pet);
 	}
 
 	@Transactional(readOnly = true)
 	@Cacheable(value = "vets")
-	public Collection<Vet> findVets() throws DataAccessException {
+	public Collection<Vet> findVets()   {
 		return this.vetRepository.findAll();
 	}
 
@@ -136,7 +135,7 @@ public class ClinicService {
 	}
 
 	@Transactional
-	public void deletePet(final int id) throws DataAccessException {
+	public void deletePet(final int id)   {
 		this.petRepository.deletePet(id);
 	}
 
@@ -151,23 +150,23 @@ public class ClinicService {
 
 	}
 
-	public Vet findVetById(int vetId) throws DataAccessException{
+	public Vet findVetById(int vetId)  {
 		return vetRepository.findVetById(vetId);
 	}
 	
 	@Transactional
-	public void deleteVet(int id) throws DataAccessException{
+	public void deleteVet(int id)  {
 		vetRepository.deleteVet(id);
 	}
 
 	@Transactional
-	public void deleteOwner(Owner owner) throws DataAccessException {
+	public void deleteOwner(Owner owner)   {
 		ownerRepository.delete(owner.getId());
 	}
 
 	// BOOKING
 	@Transactional
-	public void saveBooking(Booking booking) throws DataAccessException {
+	public void saveBooking(Booking booking)   {
 		bookingRepository.save(booking);
 	}
 
@@ -176,33 +175,33 @@ public class ClinicService {
 	}
 	
 	@Transactional
-	public void deleteBooking(int id) throws DataAccessException{
+	public void deleteBooking(int id)  {
 		bookingRepository.deleteById(id);
   	}
 	@Transactional
-	public void deleteVisit(int id) throws DataAccessException {
+	public void deleteVisit(int id)   {
 		visitRepository.deleteById(id);
 	}
 	// CAUSES
 	@Transactional(readOnly = true)
 	@Cacheable(value = "causes")
-	public Collection<Cause> findCauses() throws DataAccessException {
+	public Collection<Cause> findCauses()   {
 		return this.causeRepository.findAll();
 	}
-	public Cause findCauseById(int causeId) throws DataAccessException {
+	public Cause findCauseById(int causeId)   {
 		return causeRepository.findCauseById(causeId);
 	}
 
 	@Transactional
-	public void saveCause(Cause cause) throws DataAccessException{
+	public void saveCause(Cause cause)  {
 		this.causeRepository.save(cause);
 	}
 	// DONATIONS
-	public Collection<Donation> findDonations(int causeId) throws DataAccessException {
+	public Collection<Donation> findDonations(int causeId)   {
 		return causeRepository.findDonations(causeId);
 	}
 	@Transactional
-	public void saveDonation(Donation donation) throws DataAccessException {
+	public void saveDonation(Donation donation)   {
 		donationRepository.save(donation);
 	}
 }

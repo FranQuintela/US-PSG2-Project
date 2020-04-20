@@ -43,9 +43,9 @@ public class Booking extends BaseEntity {
 	/**
 	 * Holds value of property date.
 	 */
-	@Column(name = "exit_date")
+	@Column(name = "exitDate")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private LocalDate exit_date;
+	private LocalDate exitDate;
 
 	/**
 	 * Holds value of property description.
@@ -88,15 +88,15 @@ public class Booking extends BaseEntity {
 	 * Getter for property date.
 	 * @return Value of property date.
 	 */
-	public LocalDate getExit_date() {
-		return this.exit_date;
+	public LocalDate getExitDate() {
+		return this.exitDate;
 	}
 	/**
 	 * Setter for property date.
 	 * @param date New value of property date.
 	 */
-	public void setExit_date(LocalDate date) {
-		this.exit_date = date;
+	public void setExitDate(LocalDate date) {
+		this.exitDate = date;
 	}
 
 	/**

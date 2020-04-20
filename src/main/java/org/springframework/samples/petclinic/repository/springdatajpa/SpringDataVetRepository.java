@@ -19,7 +19,6 @@ package org.springframework.samples.petclinic.repository.springdatajpa;
 
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -39,18 +38,18 @@ public interface SpringDataVetRepository extends VetRepository, Repository<Vet, 
 
 	@Override
 	@Query("SELECT specialty FROM Specialty specialty ORDER BY specialty.name")
-	List<Specialty> findSpecialties() throws DataAccessException;
+	List<Specialty> findSpecialties()  ;
 
 	@Override
     @Query("SELECT v FROM Vet v left join fetch v.specialties WHERE v.id =:vetid")
-    public Vet findVetById(@Param("vetid") int vetId) throws DataAccessException;
+    public Vet findVetById(@Param("vetid") int vetId)  ;
 
     @Override
 	@Query("SELECT vet FROM Vet vet WHERE vet.id =:id")
-	public Vet findById(@Param("id") int id) throws DataAccessException;
+	public Vet findById(@Param("id") int id)  ;
 	
 	@Modifying
 	@Query("DELETE FROM Vet v WHERE v.id =:vetid")
-	void deleteVet(int vetid) throws DataAccessException;
+	void deleteVet(int vetid)  ;
 
 }
