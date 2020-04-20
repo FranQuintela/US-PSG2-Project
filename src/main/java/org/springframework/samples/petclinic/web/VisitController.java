@@ -89,7 +89,7 @@ public class VisitController {
 		model.put("visits", this.clinicService.findPetById(petId).getVisits());
 		return "visitList";
 	}
-	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete", method = RequestMethod.GET)
+	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
 	public String deleteVisit(Model model, @PathVariable("visitId") int visitId){
 		this.clinicService.deleteVisit(visitId);
 		return "redirect:/owners/{ownerId}";

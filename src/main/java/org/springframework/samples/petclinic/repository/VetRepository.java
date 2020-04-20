@@ -21,7 +21,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 
@@ -43,11 +42,11 @@ public interface VetRepository {
 	 *
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
-	Collection<Vet> findAll() throws DataAccessException;
-	void save(Vet vet) throws DataAccessException;
+	Collection<Vet> findAll()  ;
+	void save(Vet vet)  ;
 	void save(@Valid Specialty specialty);
-	List<Specialty> findSpecialties() throws DataAccessException;
-	Vet findVetById(int vetId) throws DataAccessException;
+	List<Specialty> findSpecialties()  ;
+	Vet findVetById(int vetId)  ;
 
 	
 	/**
@@ -56,13 +55,13 @@ public interface VetRepository {
 	 * @return the <code>Owner</code> if found
 	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
 	 */
-	Vet findById(int id) throws DataAccessException;
+	Vet findById(int id)  ;
 	
 	/**
 	 * Deletes a Single Veterinarian from an Owner
 	 */
 
-	 void deleteVet(int id) throws DataAccessException;
+	 void deleteVet(int id)  ;
 
 
 }

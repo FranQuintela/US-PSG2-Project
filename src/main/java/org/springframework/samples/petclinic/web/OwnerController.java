@@ -139,7 +139,7 @@ public class OwnerController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/delete", method = RequestMethod.GET)
+	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/delete")
 	public String deletePet(Model model, @PathVariable("petId") int petId){
 		this.clinicService.deletePet(petId);
 		return "redirect:/owners/{ownerId}";

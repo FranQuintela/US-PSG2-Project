@@ -17,7 +17,6 @@ package org.springframework.samples.petclinic.repository.springdatajpa;
 
 import java.util.Collection;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -34,13 +33,13 @@ public interface SpringDataOwnerRepository extends OwnerRepository, Repository<O
 
 	@Override
 	@Query("SELECT DISTINCT owner FROM Owner owner left join fetch owner.pets WHERE owner.lastName LIKE :lastName%")
-	public Collection<Owner> findByLastName(@Param("lastName") String lastName) throws DataAccessException;
+	public Collection<Owner> findByLastName(@Param("lastName") String lastName)  ;
 
 	@Override
 	@Query("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id =:id")
-	public Owner findById(@Param("id") int id) throws DataAccessException;
+	public Owner findById(@Param("id") int id)  ;
 
 	@Override
 	@Query("SELECT owner FROM Owner owner")
-	public Collection<Owner> findOwners() throws DataAccessException;
+	public Collection<Owner> findOwners()  ;
 }

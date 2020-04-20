@@ -18,7 +18,6 @@ package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 
@@ -40,9 +39,9 @@ public interface CauseRepository {
 	 *
 	 * @return a <code>Collection</code> of <code>Cause</code>s
 	 */
-	Collection<Cause> findAll() throws DataAccessException;
-	void save(Cause Cause) throws DataAccessException;
-	Cause findCauseById(int causeId) throws DataAccessException;
+	Collection<Cause> findAll();
+	void save(Cause cause);
+	Cause findCauseById(int causeId);
 
 	
 	/**
@@ -51,14 +50,14 @@ public interface CauseRepository {
 	 * @return the <code>Cause</code> if found
 	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
 	 */
-	Cause findById(int id) throws DataAccessException;
+	Cause findById(int id);
 	
 	/**
 	 * Deletes a Single Cause
 	 */
 
-	 void deleteCause(int id) throws DataAccessException;
-	 Collection<Donation> findDonations(int causeId) throws DataAccessException;
+	 void deleteCause(int id);
+	 Collection<Donation> findDonations(int causeId);
 
 	
 

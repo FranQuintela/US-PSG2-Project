@@ -19,7 +19,6 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -43,7 +42,7 @@ public interface OwnerRepository {
 	 * Retrieve all <code>Owner</code>s from the data store.
 	 * @return a <code>Collection</code> of <code>Owner</code>s
 	 */
-	Collection<Owner> findOwners() throws DataAccessException;
+	Collection<Owner> findOwners() ;
 	/**
 	 * Retrieve <code>Owner</code>s from the data store by last name, returning all owners
 	 * whose last name <i>starts</i> with the given name.
@@ -51,7 +50,7 @@ public interface OwnerRepository {
 	 * @return a <code>Collection</code> of matching <code>Owner</code>s (or an empty
 	 * <code>Collection</code> if none found)
 	 */
-	Collection<Owner> findByLastName(String lastName) throws DataAccessException;
+	Collection<Owner> findByLastName(String lastName) ;
 
 	/**
 	 * Retrieve an <code>Owner</code> from the data store by id.
@@ -59,19 +58,19 @@ public interface OwnerRepository {
 	 * @return the <code>Owner</code> if found
 	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
 	 */
-	Owner findById(int id) throws DataAccessException;
+	Owner findById(int id) ;
 
 	/**
 	 * Save an <code>Owner</code> to the data store, either inserting or updating it.
 	 * @param owner the <code>Owner</code> to save
 	 * @see BaseEntity#isNew
 	 */
-	void save(Owner owner) throws DataAccessException;
+	void save(Owner owner) ;
 	
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM Owner o where o.id=:ownerId")
-	void delete(@Param(value = "ownerId") int ownerId) throws DataAccessException;
+	void delete(@Param(value = "ownerId") int ownerId) ;
 
 }
  
