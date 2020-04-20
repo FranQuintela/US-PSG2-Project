@@ -43,12 +43,12 @@ In the retrospective meeting, the team has a discussion about those results.
 | 02/04         |:smiley:       |-               |-               |-               |-               |
 | 03/04         |-              |-               |-               |-               |-               |
 | 05/04         |:smiley:       |-               |-               |:smiley:        |:neutral_face:  |
-| 13/04         |-              |:smiley:        |:smiley:        |                |:neutral_face:  |
+| 13/04         |-              |:smiley:        |:smiley:        |-               |:neutral_face:  |
 | 14/04         |-              |:smiley:        |-               |-               |-               |
-| 15/04         |               |                |                |                |                |
-| 16/04         |               |                |                |                |                |
-| 17/04         |               |                |                |                |                |
-| 20/04         |               |                |                |                |                |
+| 15/04         |               |                |                |-               |                |
+| 16/04         |               |                |                |-               |                |
+| 17/04         |               |                |                |-               |                |
+| 20/04         |               |                |                |:smiley:        |                |
 | 21/04         |               |                |                |                |                |
 | 22/04         |               |                |                |                |                |
 
