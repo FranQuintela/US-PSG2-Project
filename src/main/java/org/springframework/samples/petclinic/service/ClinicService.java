@@ -192,6 +192,11 @@ public class ClinicService {
 	public Cause findCauseById(int causeId) throws DataAccessException {
 		return causeRepository.findCauseById(causeId);
 	}
+
+	@Transactional
+	public void saveCause(Cause cause) throws DataAccessException{
+		this.causeRepository.save(cause);
+	}
 	// DONATIONS
 	public Collection<Donation> findDonations(int causeId) throws DataAccessException {
 		return causeRepository.findDonations(causeId);

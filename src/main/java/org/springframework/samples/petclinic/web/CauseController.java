@@ -1,33 +1,20 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Collection;
-import java.util.List;
-
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -38,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class CauseController {
+
+	private static final String VIEWS_CAUSE_CREATE_OR_UPDATE_FORM = "causes/createOrUpdateCauseForm";
 
 	private final ClinicService clinicService;
 
@@ -69,5 +58,23 @@ public class CauseController {
 		ModelAndView mav = new ModelAndView("causes/causeDetails");
 		mav.addObject(this.clinicService.findCauseById(causeId));
 		return mav;
+	}
+
+	@GetMapping(value = "/causes/new")
+	public String initCreationForm(ModelMap model){
+		Cause cause = new Cause();
+		model.put("cause", cause);
+		return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
+	}
+
+	@PostMapping(value = "/causes/new")
+	public String processCreationForm (@Valid Cause cause, BindingResult results){
+		if(results.hasErrors()){
+			return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
+		}
+		else {
+			this.clinicService.saveCause(cause);
+			return "redirect:/causes/" + cause.getId();
+		}
 	}
 }

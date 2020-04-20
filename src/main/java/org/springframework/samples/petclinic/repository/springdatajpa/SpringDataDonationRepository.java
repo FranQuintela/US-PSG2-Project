@@ -15,8 +15,6 @@
  */
 package org.springframework.samples.petclinic.repository.springdatajpa;
 
-import org.springframework.data.repository.Repository;
-import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.repository.DonationRepository;
 
 /**
@@ -25,6 +23,6 @@ import org.springframework.samples.petclinic.repository.DonationRepository;
  * @author Michael Isvy
  * @since 15.1.2013
  */
-public interface SpringDataDonationRepository extends DonationRepository, Repository<Donation, Integer> {
+public interface SpringDataDonationRepository extends DonationRepository {
 
 }
