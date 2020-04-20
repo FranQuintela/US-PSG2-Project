@@ -48,7 +48,7 @@ In the retrospective meeting, the team has a discussion about those results.
 | 15/04         |               |                |                |-               |                |
 | 16/04         |               |                |                |-               |                |
 | 17/04         |               |                |                |-               |                |
-| 20/04         |               |                |                |:smiley:        |                |
+| 20/04         |:smiley:       |                |                |:smiley:        |                |
 | 21/04         |               |                |                |                |                |
 | 22/04         |               |                |                |                |                |
 
