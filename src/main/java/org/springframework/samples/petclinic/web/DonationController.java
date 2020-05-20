@@ -68,6 +68,10 @@ public class DonationController {
 			result.rejectValue("amount", "error.amount", "You cant exceed the budget target of the cause");
 		}
 
+		if(donation.getAmount() < 1.0){
+			result.rejectValue("amount", "error.amount", "You can't make donations under 1 euro");
+		}
+
 		if (result.hasErrors()) {
 			List<String> owners = this.clinicService.findOwners().stream().map(n -> n.getFirstName()+" "+n.getLastName()).collect(Collectors.toList());	
 			model.addAttribute("clients", owners);
