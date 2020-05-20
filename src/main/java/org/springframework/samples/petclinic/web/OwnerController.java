@@ -22,8 +22,10 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -140,21 +142,29 @@ public class OwnerController {
 	}
 
 	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/delete")
-	public String deletePet(Model model, @PathVariable("petId") int petId){
+	public String deletePet(final ModelMap model, @PathVariable("petId") final int petId) {
+
+		for (Booking b : this.clinicService.findBookingsByPetId(petId)) {
+			this.clinicService.deleteBooking(b.getId());
+		}
+		for (Visit v : this.clinicService.findVisitsByPetId(petId)) {
+			this.clinicService.deleteVisit(v.getId());
+		}
 		this.clinicService.deletePet(petId);
+
 		return "redirect:/owners/{ownerId}";
 	}
 
+
 	@RequestMapping(value = "/owners/{ownerId}/delete")
-	public String delete(@PathVariable("ownerId") int ownerId, ModelMap model) {
+	public String delete(@PathVariable("ownerId") final int ownerId, final ModelMap model) {
 		Owner owner = this.clinicService.findOwnerById(ownerId);
 		List<Pet> pets;
 		pets = owner.getPets();
-		for(Pet pet : pets) {
-			this.clinicService.deletePet(pet.getId());
+		for (Pet pet : pets) {
+			this.deletePet(model, pet.getId());
 		}
 		this.clinicService.deleteOwner(owner);
 		return "redirect:/owners";
 	}
-
 }
