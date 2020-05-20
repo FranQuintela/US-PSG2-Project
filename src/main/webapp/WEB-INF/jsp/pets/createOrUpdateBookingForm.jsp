@@ -38,10 +38,10 @@
         <form:form modelAttribute="booking" class="form-horizontal">
             <div class="form-group has-feedback">
                     <fmt:message var="date" key="entry_date"/>
-                    <fmt:message var="exit_date" key="exit_date"/>
+                    <fmt:message var="exitDate" key="exitDate"/>
             		<fmt:message var="details" key="details"/>
                 <petclinic:inputField label="${date}" name="date"/>
-                <petclinic:inputField label="${exit_date}" name="exit_date"/>
+                <petclinic:inputField label="${exitDate}" name="exitDate"/>
                 <petclinic:inputField label="${details}" name="details"/>
             </div>
 
@@ -58,14 +58,14 @@
         <table class="table table-striped">
             <tr class="brown">
                 <th><fmt:message key="bookingDate"/></th>
-                <th><fmt:message key="exit_date"/></th>
+                <th><fmt:message key="exitDate"/></th>
                 <th><fmt:message key="details"/></th>
             </tr>
             <c:forEach var="booking" items="${booking.pet.bookings}">
                 <c:if test="${!booking['new']}">
                     <tr>
                         <td><petclinic:localDate date="${booking.date}" pattern="yyyy/MM/dd"/></td>
-                        <td><petclinic:localDate date="${booking.exit_date}" pattern="yyyy/MM/dd"/></td>
+                        <td><petclinic:localDate date="${booking.exitDate}" pattern="yyyy/MM/dd"/></td>
                         <td><c:out value="${booking.details}"/></td>
                     </tr>
                 </c:if>
