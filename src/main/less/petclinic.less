@@ -13,8 +13,8 @@
  */
 @icon-font-path:    "../../webjars/bootstrap/fonts/";
 
-@spring-green:      #6db33f;
-@spring-dark-green: #5fa134;
+@spring-green:      #94ffc18f;
+@spring-dark-green: #94ffc18f;
 @spring-brown:      #34302D;
 @spring-grey:       #838789;
 @spring-light-grey: #f1f1f1;
@@ -26,8 +26,8 @@
 @link-hover-color:                  #3F3232;
 
 @navbar-default-link-color:         #f1f1f1;
-@navbar-default-link-active-color:  #FFCF7A;
-@navbar-default-link-hover-color:   #FFCF7A;
+@navbar-default-link-active-color:  #94ffc18f;
+@navbar-default-link-hover-color:   #94ffc18f;
 @navbar-default-link-hover-bg:      #3F3232;
 @navbar-default-toggle-icon-bar-bg: @spring-light-grey;
 @navbar-default-toggle-hover-bg:    transparent;
@@ -39,7 +39,7 @@
 
 @btn-default-color:              @spring-light-grey;
 @btn-default-bg:                 @spring-brown;
-@btn-default-border:             #FFCF7A;
+@btn-default-border:             #94ffc18f;
 
 @nav-tabs-active-link-hover-color:        @spring-light-grey;
 @nav-tabs-active-link-hover-bg:           @spring-brown;
@@ -65,8 +65,10 @@ html {
   background-color: lighten(@spring-brown, 3%);
   color: @spring-light-grey;
 }
+
 .table{
-  background-color: #74593D;
+  background-color: #94ffc18f;
+  border: 1px solid black;
 }
 .table-filter {
   background-color: @spring-brown;
@@ -96,7 +98,7 @@ html {
   &.active,
   .open .dropdown-toggle& {
     background-color: @spring-brown;
-    border-color: @spring-brown;
+    border-color: #94ffc18f;
   }
 }
 
@@ -260,6 +262,9 @@ hr {
   color: #FFCF7A !important;
 }
 
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #ffce7ac4 !important;
+}
 
 @import "typography.less";
 @import "header.less";
