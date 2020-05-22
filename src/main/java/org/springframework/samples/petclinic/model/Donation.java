@@ -19,7 +19,7 @@ public class Donation extends BaseEntity{
 	
 	@NotNull
 	@Column(name = "amount")
-	@Min(0)
+	@Min(1)
 	private Double amount;
 	
     @Column(name =  "date_of_donation")

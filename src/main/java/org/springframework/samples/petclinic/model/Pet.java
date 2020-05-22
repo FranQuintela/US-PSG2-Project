@@ -11,7 +11,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations under the License
  */
 package org.springframework.samples.petclinic.model;
 
@@ -58,10 +58,10 @@ public class Pet extends NamedEntity {
 	@JoinColumn(name = "owner_id")
 	private Owner owner;
 
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "pet", fetch = FetchType.EAGER)
+	@OneToMany( mappedBy = "pet")
 	private Set<Visit> visits;
 
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "pet", fetch = FetchType.EAGER)
+	@OneToMany( mappedBy = "pet")
 	private Set<Booking> bookings;
 	
 	public void setBirthDate(LocalDate birthDate) {

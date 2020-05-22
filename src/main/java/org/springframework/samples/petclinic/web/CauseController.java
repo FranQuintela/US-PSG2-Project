@@ -72,6 +72,7 @@ public class CauseController {
 		if(results.hasErrors()){
 			return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
 		}
+		
 		else {
 			this.clinicService.saveCause(cause);
 			return "redirect:/causes/" + cause.getId();
